@@ -11,10 +11,10 @@
     const urlMap = {
       gi: "https://genshin.hoyoverse.com/en/gift",
       hsr: "https://hsr.hoyoverse.com/gift",
-      zzz: "https://zenless.hoyoverse.com/en/gift"
+      zzz: "https://zenless.hoyoverse.com/en"  // vì chưa có trang redeem chính thức
     };
 
-    if (game in urlMap && code) {
+    if (game && game in urlMap && code) {
       const target = `${urlMap[game]}#code=${code}`;
       window.location.href = target;
     } else {
@@ -30,7 +30,7 @@
     const urlMap = {
       gi: "https://genshin.hoyoverse.com/en/gift",
       hsr: "https://hsr.hoyoverse.com/gift",
-      zzz: "https://zenless.hoyoverse.com/en/gift"
+      zzz: "https://zenless.hoyoverse.com/en"
     };
     const manual = document.getElementById("manual");
     if (game in urlMap && code) {
