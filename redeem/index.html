@@ -6,20 +6,38 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
-    const target = "https://genshin.hoyoverse.com/en/gift";
-    if (code) {
-      window.location.href = `${target}#code=${code}`;
+    const game = params.get("game");
+
+    const urlMap = {
+      gi: "https://genshin.hoyoverse.com/en/gift",
+      hsr: "https://hsr.hoyoverse.com/gift",
+      zzz: "https://zenless.hoyoverse.com/en/gift"
+    };
+
+    if (game in urlMap && code) {
+      const target = `${urlMap[game]}#code=${code}`;
+      window.location.href = target;
     } else {
-      document.write("Không tìm thấy mã code.");
+      document.write("❌ Link không hợp lệ. Hãy chắc chắn có đủ `?game=` và `?code=`.");
     }
   </script>
 </head>
 <body>
   <p>Nếu không tự chuyển, <a id="manual">bấm vào đây</a>.</p>
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
-    document.getElementById("manual").href = "https://genshin.hoyoverse.com/en/gift#code=" + code;
+    const code = new URLSearchParams(window.location.search).get("code");
+    const game = new URLSearchParams(window.location.search).get("game");
+    const urlMap = {
+      gi: "https://genshin.hoyoverse.com/en/gift",
+      hsr: "https://hsr.hoyoverse.com/gift",
+      zzz: "https://zenless.hoyoverse.com/en/gift"
+    };
+    const manual = document.getElementById("manual");
+    if (game in urlMap && code) {
+      manual.href = `${urlMap[game]}#code=${code}`;
+    } else {
+      manual.href = "#";
+    }
   </script>
 </body>
 </html>
