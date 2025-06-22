@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <title>Auto Redeem</title>
   <script>
-    const code = window.location.pathname.split("/").pop();
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
     const target = "https://genshin.hoyoverse.com/en/gift";
-    window.location.href = `${target}#code=${code}`;
+    if (code) {
+      window.location.href = `${target}#code=${code}`;
+    } else {
+      document.write("Không tìm thấy mã code.");
+    }
   </script>
 </head>
 <body>
-  <p>Đang chuyển hướng… Nếu không, <a id="manualLink">bấm vào đây</a>.</p>
+  <p>Nếu không tự chuyển, <a id="manual">bấm vào đây</a>.</p>
   <script>
-    document.getElementById("manualLink").href = "https://genshin.hoyoverse.com/en/gift#code=" + window.location.pathname.split("/").pop();
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    document.getElementById("manual").href = "https://genshin.hoyoverse.com/en/gift#code=" + code;
   </script>
 </body>
 </html>
