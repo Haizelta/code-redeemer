@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Auto Redeem</title>
+  <script>
+    const code = window.location.pathname.split("/").pop();
+    const target = "https://genshin.hoyoverse.com/en/gift";
+    window.location.href = `${target}#code=${code}`;
+  </script>
+</head>
+<body>
+  <p>Đang chuyển hướng… Nếu không, <a id="manualLink">bấm vào đây</a>.</p>
+  <script>
+    document.getElementById("manualLink").href = "https://genshin.hoyoverse.com/en/gift#code=" + window.location.pathname.split("/").pop();
+  </script>
+</body>
+</html>
